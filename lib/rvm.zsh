@@ -1,8 +1,18 @@
-# get the name of the ruby version
+# get the name of the branch we are on
 function rvm_prompt_info() {
-  [ -f $HOME/.rvm/bin/rvm-prompt ] || return
-  local rvm_prompt
-  rvm_prompt=$($HOME/.rvm/bin/rvm-prompt ${ZSH_THEME_RVM_PROMPT_OPTIONS} 2>/dev/null)
-  [[ "${rvm_prompt}x" == "x" ]] && return
-  echo "${ZSH_THEME_RVM_PROMPT_PREFIX:=(}${rvm_prompt}${ZSH_THEME_RVM_PROMPT_SUFFIX:=)}"
+  ruby_version=$(~/.rvm/bin/rvm-prompt 2> /dev/null) || return
+  echo "($ruby_version)"
 }
+
+
+function my_rvm_prompt_info() {
+  ruby_version=$(~/.rvm/bin/rvm-prompt 2> /dev/null) || return
+  echo "$ruby_version"
+}
+
+function generate_rvmrc_file() {
+  echo "RVM='$1'\nrvm use \$RVM --create\nrvm wrapper \$RVM textmate\n" > .rvmrc
+}
+
+alias rvmi='my_rvm_prompt_info'
+alias rvmrc='generate_rvmrc_file'

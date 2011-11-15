@@ -1,3 +1,6 @@
+alias git-deploy-tags='git tag -a deployment-$(date -u +"%Y%m%d%H%M") -m "Deployment"; git tag -f -a current_release -m "Current release"'
+
+
 # Aliases
 alias g='git'
 compdef g=git
@@ -94,6 +97,8 @@ alias gstd='git stash drop'
 # Will cd into the top of the current repository
 # or submodule.
 alias grt='cd $(git rev-parse --show-toplevel || echo ".")'
+
+alias gd='git diff | mate'
 
 # Git and svn mix
 alias git-svn-dcommit-push='git svn dcommit && git push github master:svntrunk'
