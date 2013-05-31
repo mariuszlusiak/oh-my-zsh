@@ -9,7 +9,7 @@ PROMPT='%{$fg[yellow]%}%n%{$reset_color%} at %{$fg[yellow]%}%m%{$reset_color%} â
 
 rvmi_color=$'%{\e[1;30m%}'
 
-RPROMPT='$rvmi_color$(rvm_prompt_info)%{$reset_color%}%'
+RPROMPT='$rvmi_color$(rbenv_prompt_info)%{$reset_color%}%'
 
 
 ZSH_THEME_GIT_PROMPT_PREFIX="git:(%{$fg[red]%}"
